@@ -234,6 +234,12 @@ public class ArrayPractices
   public static void flip( int[] data )
   {
     /* YOUR BRILLIANT CODE HERE */
+    int[] tempArray = new int[data.length];
+
+    for(int i = data.length -1, j=0; i>-1 && j< data.length; i--, j++){
+      tempArray[j] = data[i];
+    }
+    printArray(tempArray);
   }
 
 

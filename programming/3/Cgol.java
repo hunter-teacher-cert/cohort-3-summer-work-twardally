@@ -28,10 +28,10 @@ public class Cgol{
     char[][] board = new char [rows][cols];
     for(int i = 0; i < board.length; i++){
       for(int j = 0; j < board[0].length; j++){
-        board[i][j] = '-';
+        board[i][j] = '-'; //assigned a dead cell(-) to each cell
       }
     }
-    return board;
+    return board; //both loops are done then the board can be returned
   }
 
   //print the board to the terminal with all dead cells
@@ -43,7 +43,7 @@ public class Cgol{
         System.out.print(board[i][j] + " ");
         
       }
-      System.out.println();  
+      System.out.println();  //Goes through the board and prints out each line of the board
     }    
     
   }
@@ -51,7 +51,7 @@ public class Cgol{
   //set cell (r,c) to val
   public static void setCell( char[][] board, int r, int c, char val )
   {
-    board[r][c]=val;
+    board[r][c]=val; 
   }
 
 
@@ -60,6 +60,7 @@ public class Cgol{
   {
     int count =0;
     //similar to explode
+    //Math.max and Math.min is used to check the boundaries
     for (int i = Math.max(0, row - 1); i <= Math.min(row + 1, board.length - 1); i++) {
       for (int j = Math.max(0, col - 1); j <= Math.min(col + 1, board[i].length-1); j++) {
         if (! (i == row && j == col)){ //excludes the center
@@ -88,7 +89,7 @@ public class Cgol{
   public static char getNextGenCell( char[][] board,int r, int c )
   {
     char nextGenCell = board[r][c]; //current value of at r,c
-    int count = countNeighbours(board, r, c);////check the neighbors of r,c
+    int count = countNeighbours(board, r, c);////check the neighbors of r,c. Uses the function countNeighbours
     if (nextGenCell == 'X'){ //if cell is alive
       if (count < 2 || count >3){// too lonely or too crowded
         nextGenCell = '-';
@@ -111,7 +112,7 @@ public class Cgol{
     char[][] nextGenBoard = copyBoard(board); //copy the current board for the next generation
     for (int i =0; i< board.length; i++){
       for (int j=0; j <board[0].length; j++){
-        nextGenBoard[i][j] = getNextGenCell(board,i,j);
+        nextGenBoard[i][j] = getNextGenCell(board,i,j); //goes through each cell and assigns a new val in the new board based on the function getNextGenCell
       }
     }
     
@@ -130,7 +131,7 @@ public class Cgol{
     char [][] temp = new char [original.length][original[0].length];
     for (int i=0; i <original.length;i++){
       for (int j =0; j < original[0].length; j++){
-        temp [i][j] = original [i][j];
+        temp [i][j] = original [i][j]; //copying the value from the old board to the new board
       }
     }
     
@@ -142,13 +143,25 @@ public class Cgol{
   public static void main( String[] args )
   {
     
-    char [][] board = createNewBoard(25,25);
-    //printBoard(board);
-    // setCell(board, 0, 0, 'X');
+    char [][] board = createNewBoard(25,25); //creates a default board of 25 by 25 dashes
+    printBoard(board); //just prints out the default board
+    setCell(board, 0, 0, 'X');
     // setCell(board, 0, 1, 'X');
     // setCell(board, 1, 0, 'X');
     // setCell(board, 3, 2, 'X');
 
+
+    
+    //used to test the countNeighours function
+    int tempCount  = countNeighbours (board, 0, 1); 
+    System.out.println(tempCount); //prints out the # of neighbours at 3,1
+
+    
+    //used to test the getNextGenCell
+    char nextCell = getNextGenCell(board, 0, 0);
+      System.out.println(nextCell);
+
+    
     //random board initialization, could be it's own function!
     Random r = new Random();
     double prob = 0.5; //likilhood of being alive

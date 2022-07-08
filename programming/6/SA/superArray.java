@@ -1,7 +1,7 @@
 /**
  * SuperArray by Team MarvelvsDC
- * First Last
- * collaborators: First Last, First Last
+ * Michael Randazzo
+ * collaborators: Alise Braick, Tanya Wardally, Sarah McCoy
  */
 
 /**
@@ -38,7 +38,8 @@ public class SuperArray
   {
     //init underlying/inner storage of specified capacity
     /* YOUR SIMPLE+SMART CODE HERE */
-
+    numberElements = 0; 
+    data = new int[size];
     //init instance vars
     /* YOUR SIMPLE+SMART CODE HERE */
 
@@ -49,7 +50,8 @@ public class SuperArray
   {
     //init underlying/inner storage of capacity 10
         /* YOUR SIMPLE+SMART CODE HERE */
-
+    numberElements = 0;
+    data = new int[10];
     //init instance vars
         /* YOUR SIMPLE+SMART CODE HERE */
   }
@@ -70,11 +72,11 @@ public class SuperArray
 
     // add item
     /* YOUR SIMPLE+SMART CODE HERE */
-
+    data[numberElements] = value;
 
     // increment numberElements
     /* YOUR SIMPLE+SMART CODE HERE */
-
+    numberElements++;
   }//end add()
 
 
@@ -82,6 +84,10 @@ public class SuperArray
   {
     //return whether this SuperArray instance is empty
     /* YOUR SIMPLE+SMART CODE HERE */
+    if( numberElements == 0){
+      return true;
+    }
+    return false;
   }
 
 
@@ -89,6 +95,7 @@ public class SuperArray
   {
     //return item at index
     /* YOUR SIMPLE+SMART CODE HERE */
+    return data[index];
   }
 
 
@@ -96,6 +103,11 @@ public class SuperArray
   {
     //return stringified version of this Object
     /* YOUR SIMPLE+SMART CODE HERE */
+    String dataS= "";
+    for( int i = 0; i< numberElements; i++){
+     dataS = dataS + data[i] + " "; 
+    }
+    return dataS;
   }//end toString()
 
 

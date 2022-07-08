@@ -68,7 +68,7 @@ public class Rational
 //   // uses the most precise floating point primitive
    public double floatValue()
    {
-     double value = (double)_numerator/(double)_denominator;
+     double value = (double)_numerator/(double) _denominator;
 		 return value;
    } 
    
@@ -93,8 +93,10 @@ public class Rational
   public void divide ( Rational r )
   {
 		//to divide by a fraction you multiply by its reciprocal
+    if (r._numerator !=0){
     _numerator = _numerator * r._denominator;
     _denominator = _denominator * r._numerator;
-  }     
-
+  } else{
+    System.out.println("Invalid; no division performed.");  }
+  }
  }//end class

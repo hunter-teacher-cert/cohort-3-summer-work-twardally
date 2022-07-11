@@ -12,6 +12,15 @@ public class SuperArrayDriver
     System.out.println(sa);
     System.out.println("Testing isEmpty (should be true)");
     System.out.println(sa.isEmpty());
+    //testing a randome super array (sa)
+    SuperArray sr = new SuperArray(50);
+    
+    Random r = new Random ();
+    for( int i = 0; i< 15; i++){
+      sr.add(r.nextInt(3));
+    }
+    System.out.println(sr);
+    System.out.println(sr.debug());
     // -----------------------------------------------------------
     // YOUR HOMEGROWN/HOUSEMADE/ROLL-YOUR-OWN TEST METHODS HERE...
     // -----------------------------------------------------------
